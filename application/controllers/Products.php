@@ -10,7 +10,7 @@ class Products extends CI_Controller {
 		$data['title'] = 'Produtos';
 
 		$this -> load -> view('templates/header');
-		$this -> load -> view('products/index');
+		$this -> load -> view('products/index', $data);
 		$this -> load -> view('templates/footer');
 	}
 	
@@ -19,7 +19,7 @@ class Products extends CI_Controller {
 		$data['title'] = 'Cadastrar Produto';
 
 		$this -> load -> view('templates/header');
-		$this -> load -> view('products/create');
+		$this -> load -> view('products/create', $data);
 		$this -> load -> view('templates/footer');
 	}
 
