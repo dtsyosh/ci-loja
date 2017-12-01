@@ -1,3 +1,1 @@
-<?= $test ?>
-
 Products index
