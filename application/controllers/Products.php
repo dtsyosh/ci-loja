@@ -6,6 +6,7 @@
 class Products extends CI_Controller {
 
 	public function index() {
+		
 		$data['title'] = 'Produtos';
 
 		$this -> load -> view('templates/header');
@@ -14,6 +15,9 @@ class Products extends CI_Controller {
 	}
 	
 	public function create() {
+
+		$data['title'] = 'Cadastrar Produto';
+
 		$this -> load -> view('templates/header');
 		$this -> load -> view('products/create');
 		$this -> load -> view('templates/footer');
