@@ -10,7 +10,16 @@ class Products extends CI_Controller {
 	}
 	
 	public function create() {
+		$this -> load -> view('products/create');
+	}
 
+	public function store()	{
+		
+		$this -> db -> insert(array(
+			'name' => $_POST['name'],
+			'price' => $_POST['price'],
+			'quantity' => $_POST['quantity']
+		));
 	}
 
 	public function update() {
