@@ -2,6 +2,17 @@
 
 class Product_model extends CI_Model {
 
+	public function getProductById($id) {
+
+		if ($id) {
+
+			$query = $this -> db -> get_where('products', array('id' => $id));
+			
+			return $query -> row();
+		}
+
+	}
+
 	public function insert($data) {
 
 		/*
