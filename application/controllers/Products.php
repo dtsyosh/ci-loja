@@ -10,11 +10,11 @@ class Products extends CI_Controller {
 
 		/*
 		 * Carrega o arquivo model 'Product_model'
-		 * e atribui a ele o apelido 'products'
+		 * e atribui a ele o apelido 'product'
 		 * para ficar mais facil de chamar
 		 */
 
-		$this -> load -> model('Product_model', 'products');
+		$this -> load -> model('Product_model', 'product');
 	}
 
 	public function index() {
@@ -46,9 +46,28 @@ class Products extends CI_Controller {
         );
     
 		// Invoca o método insert() do model
-		$this -> products -> insert($data);
+		$this -> product -> insert($data);
 
 		redirect('/');
+	}
+
+	public function show($id) {
+		
+		// Realiza uma busca no banco com pelo id passado pela url
+		$product = $this -> product -> getProductById($id); 
+
+		// Testa se a consulta achou algum dado correspondente
+		if(!$product) {
+			redirect('/products');
+		}
+
+		// Se passar é por que achou
+		$data['title'] = $product -> name;
+		$data['product'] = $product;
+
+		$this -> load -> view('templates/header');
+		$this -> load -> view('products/show', $data);
+		$this -> load -> view('templates/footer');
 	}
 
 	public function update() {
@@ -60,13 +79,15 @@ class Products extends CI_Controller {
 			'quantity' => $this -> input -> post('quantity')
 		);
 		// Invoca o método update() do model
-		$this -> products -> update($data);
+		$this -> product -> update($data);
+
+		redirect('/products');
 	}
 
 	public function destroy() {
 
 		$data = $this -> input -> post('id');
 		// Invoca o método delete() do model
-		$this -> products -> delete($data);
+		$this -> product -> delete($data);
 	}
 }
