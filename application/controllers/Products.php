@@ -39,19 +39,34 @@ class Products extends CI_Controller {
 
 	public function store()	{
 		
+		$data = array(
+            'name'     => $this -> input -> post('name'),
+			'price'    => $this -> input -> post('price'),
+			'quantity' => $this -> input -> post('quantity')
+        );
+    
 		// Invoca o método insert() do model
-		$this -> products -> insert();
+		$this -> products -> insert($data);
+
+		redirect('/');
 	}
 
 	public function update() {
 		
+		$data = array(
+			'id'       => $this -> input -> post('id'),
+			'name'     => $this -> input -> post('name'),
+			'price'    => $this -> input -> post('price'),
+			'quantity' => $this -> input -> post('quantity')
+		);
 		// Invoca o método update() do model
-		$this -> products -> update();
+		$this -> products -> update($data);
 	}
 
 	public function destroy() {
 
+		$data = $this -> input -> post('id');
 		// Invoca o método delete() do model
-		$this -> products -> delete();
+		$this -> products -> delete($data);
 	}
 }
