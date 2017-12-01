@@ -14,7 +14,6 @@ class Products extends CI_Controller {
 	public function index() {
 		
 		$data['title'] = 'Produtos';
-		$data['test'] = $this -> products -> test();
 
 		$this -> load -> view('templates/header');
 		$this -> load -> view('products/index', $data);
