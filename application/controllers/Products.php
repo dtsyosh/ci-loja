@@ -33,10 +33,17 @@ class Products extends CI_Controller {
 	}
 
 	public function update() {
-
+		
+		$this -> db -> replace('products', array(
+			'id' => $_POST['id'],
+			'name' => $_POST['name'],
+			'price' => $_POST['price'],
+			'quantity' => $_POST['quantity']
+		));
 	}
 
 	public function destroy() {
-
+		
+		$this -> db -> delete('products', array('id' => $_POST['id']));
 	}
 }
